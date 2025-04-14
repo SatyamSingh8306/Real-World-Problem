@@ -5,7 +5,7 @@ import os
 
 load_dotenv()
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
-file_path = ""
+file_path = "audio1.mp3"
 
 def speechToText(file_path):
     client = Groq()
