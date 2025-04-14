@@ -23,8 +23,8 @@ class ImageAnalysisAgent:
 
 if __name__ == "__main__":
     
-    image_path = "trail.jpeg"
-    query = "Explain about the image."
+    image_path = "puzzle.png"
+    query = "Acting like a Problem Solver Think and solve the given problem in image."
     agent = ImageAnalysisAgent()
     result = agent.analyze_image(image_path, query)
     

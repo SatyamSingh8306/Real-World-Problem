@@ -25,5 +25,5 @@ class PaddleOCRTool(BaseTool):
 
 if __name__ == "__main__":
     ocr_tool = PaddleOCRTool()
-    extracted_text = ocr_tool.run("trail.jpeg")  
+    extracted_text = ocr_tool.run("puzzle.png")  
     print("Extracted Text:", extracted_text)

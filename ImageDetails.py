@@ -45,8 +45,9 @@ def analyze_image_with_query(query, model, encoded_image):
     return result.content
 
 if __name__ =="__main__":
-    encoded_image = encode_image("trail.jpeg")
-    ans = analyze_image_with_query(query="Extract the text from the image and Explain details about the image",
+    
+    encoded_image = encode_image("puzzle.png")
+    ans = analyze_image_with_query(query="Acting like a Problem Solver Think and solve the given problem in image.",
                                    model=model_name,
                                    encoded_image=encoded_image)
     print(ans)
