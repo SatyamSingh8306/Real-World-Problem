@@ -1,4 +1,4 @@
-from ImageDetails import encode_image, analyze_image_with_query
+from part1.ImageDetails import encode_image, analyze_image_with_query
 from OCR import PaddleOCRTool
 
 class ImageAnalysisAgent:
