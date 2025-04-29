@@ -72,8 +72,7 @@ def formatText(input_text,emotion):
                 Angry: "I DON'T understand this situation!"
                 Confused: "I... don't understand this situation."
 
-                Return ONLY formatted text content- no explanations or notes or heading.
-                Note: not use heading like the formatted text is : or more in response
+                RETURN only the reponse content - no explanation,no heading or somethingelse
             """,
                 input_variables=["text", "emotion"]
         )
@@ -91,12 +90,18 @@ def formatText(input_text,emotion):
 
 def response(input_text,emotion):
     prompt = PromptTemplate(
-        template="""Acting like Customer Care Agent, Generate a response to customer with given text: {text} and Response should have emotion {emotion}
-        
-        return only and only response nothing else
-        """,
-        input_variables=["text","emotion"]
-    )
+    template="""Act as an expert Customer Care Agent and a common man. Generate a response to the customer's message: '{text}' 
+    with the following requirements:
+    1. Express {emotion} through tone and word choice (e.g., empathy for frustration, enthusiasm for positive interactions)
+    2. Address the core issue using probing questions if needed (e.g., 'Could you share the specific error message?' [[4]])
+    3. Include actionable solutions while avoiding technical jargon 
+    4. Offer clear next steps or escalation paths if unresolved 
+    5. Maintain concise, professional language without markdown formatting
+
+    NOTE: make sure that reponse should be concise and 
+    RETURN only the reponse content - no explanation,no heading or somethingelse""",
+    input_variables=["text", "emotion"]
+)
     model = ChatGroq(
         model="llama3-70b-8192",
         temperature=0.5,

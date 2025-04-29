@@ -1,16 +1,17 @@
 import os
 from speech_to_text import speechToText
 from meta_emotion import sentimentAudio
+from features import emotionInAudio
 from text_to_speech import formatText, response, textToSpeechWithGTTS
 
 # Define emotion mapping
 EMOTION_MAPPING = {
-    "ang": "calm",
+    "angry": "calm",
     "sad": "empathetic",
-    "hap": "positive",
-    "neu": "neutral",
-    # "surprised": "calm",
-    # "fearful": "reassuring"
+    "happy": "positive",
+    "neutral": "neutral",
+    "surprised": "calm",
+    "fearful": "reassuring"
 }
 
 def process_user_audio(audio_file_path,output_audio_path ="response_audio_6.mp3"):
@@ -20,7 +21,7 @@ def process_user_audio(audio_file_path,output_audio_path ="response_audio_6.mp3"
     user_text = speechToText(audio_file_path)
     print(f"User Text: {user_text}")
 
-    detected_emotion = sentimentAudio(audio_file_path)
+    detected_emotion = emotionInAudio(audio_file_path).lower()
     print(f"Detected Emotion: {detected_emotion}")
 
     response_emotion = EMOTION_MAPPING.get(detected_emotion, "neutral")
